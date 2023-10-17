@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{title}}{% endblock %}</title>
+    <link href="{% static  "css/portfolio.css" %}" rel="stylesheet">
+</head>
+<body>
+      <div>
+        <h1 >
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'upload' %}">Upload</a>
+        </h1>
+      </div>
+      <div>{% block content %}{% endblock %}</div>
+
+</body>
+</html>

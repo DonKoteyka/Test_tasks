@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Список файлов{% endblock %}
+{% block content %}
+<div>
+  <ul>
+  {% for file in object_list %}
+    <ol><a href="{% url 'file' file.id %}">{{ file.name }}</a></ol>
+    {% for i in file.headers %}
+    <li>|{{ i }}|</li>
+    {% endfor %}
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}
