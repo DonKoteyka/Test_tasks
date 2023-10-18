@@ -4,13 +4,27 @@
 {% block title %}Список файлов{% endblock %}
 {% block content %}
 <div>
+  {% if object_list %}
   <ul>
   {% for file in object_list %}
-    <ol><a href="{% url 'file' file.id %}">{{ file.name }}</a></ol>
-    {% for i in file.headers %}
-    <li>|{{ i }}|</li>
+    <p> </p>
+    <ol>В файле с названием <a href="{% url 'file' file.id %}">{{ file.file }} </a> имеются следующие строки:</ol>
+    <p> </p>
+      <table>
+        <thead>
+          <tr>
+           {% for i in file.header %}
+            <th> {{i}}, </th>
+            {% endfor %}
+          </tr>
+        </thead>
+      </table>
+
     {% endfor %}
-  {% endfor %}
   </ul>
+  {% else %}
+  <p> Пока что ни одного файла не загружено</p>
+  {% endif %}
+
 </div>
 {% endblock %}

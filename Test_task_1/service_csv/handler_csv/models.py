@@ -2,12 +2,11 @@ from django.db import models
 
 # Create your models here.
 class FileCSV(models.Model):
-    name = models.CharField(max_length=256, blank=True)
-    file = models.FileField(upload_to='documents/', blank=True)
+    file = models.FileField(blank=True)
     created_at = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.file
 
     class Meta:
         verbose_name = 'Файл'

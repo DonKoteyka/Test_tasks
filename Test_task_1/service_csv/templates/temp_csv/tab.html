@@ -4,22 +4,24 @@
 {% block title %}{{ name.name }}{% endblock %}
 {% block content %}
 <div>
-  <p> Название файла: {{ name.name }}, дата загрузки: {{ name.created_at }}</p>
+  <p> Название файла: {{ file.file }}, дата загрузки: {{ file.created_at }}</p>
   <table>
-  <tr>
-    {% for i in header_csv %}
-    <th>| {{i}} |</th>
-    {% endfor %}
-  </tr>
-  <tr>
-    {% for row in body_csv %}
-
-      {% for i in row %}
-      <td>| {{i}} |</td>
+    <thead>
+      <tr>
+      {% for i in file.header %}
+        <th><a href="?sort={{i}}"> {{i}} </th>
       {% endfor %}
-
-    {% endfor %}
-  </tr>
-</table>
+      </tr>
+    </thead>
+    <tbody>
+    {% for j in file.content %}
+    <tr>
+        {% for k in j %}
+        <td> {{k}} </td>
+        {% endfor %}
+    </tr>
+     {% endfor %}
+    </tbody>
+  </table>
 </div>
 {% endblock %}
