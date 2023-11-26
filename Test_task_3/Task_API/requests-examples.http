@@ -1,0 +1,44 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# создание продукта
+POST {{baseUrl}}/task/
+Content-Type: application/json
+
+{
+  "list": "Первая задача"
+}
+
+###
+
+# получение продуктов
+GET {{baseUrl}}/task/
+Content-Type: application/json
+
+###
+
+# обновление продукта
+PATCH {{baseUrl}}/task/1/
+Content-Type: application/json
+
+{
+  "list": "Первая задача PATCH"
+}
+
+
+###
+
+# удаление продукта
+DELETE {{baseUrl}}/task/1/
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию и описанию
+GET {{baseUrl}}/task/?list=Первая+задача+PATCH
+Content-Type: application/json
+
+###
+
+

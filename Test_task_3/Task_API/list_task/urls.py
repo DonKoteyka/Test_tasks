@@ -23,9 +23,9 @@ from rest_framework.routers import DefaultRouter
 from app.views import TasksViewSet
 
 router = DefaultRouter()
-router.register('api', TasksViewSet)
+router.register('task', TasksViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]
