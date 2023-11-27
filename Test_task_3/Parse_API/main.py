@@ -10,14 +10,6 @@ load_dotenv()
 
 Base = declarative_base()
 
-
-data_api = get_request(os.getenv('API_URL'))
-DSN = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@localhost:5432/{os.getenv('DB_NAME')}"
-engine = sq.create_engine(DSN)
-
-Session = sessionmaker(bind=engine)
-session = Session()
-
 def create_tables(engine):
     Base.metadata.create_all(engine)
 
