@@ -4,7 +4,7 @@ Base = declarative_base()
 
 
 class Tasks(Base):
-    __tablename__ = 'tasks'
+    __tablename__ = 'tasks_1'
     id = sq.Column(sq.Integer, primary_key=True)
     list = sq.Column(sq.String(length=256), nullable=False)
     created_at = sq.Column(sq.DateTime, nullable=False)

@@ -17,15 +17,24 @@ def drop_tables(engine):
     Base.metadata.drop_all(engine)
 
 def update_db(data_api):
-    data_db = (session.query(Tasks.id).all())
+    data_db = session.query(Tasks.id).all()
     data_id = list([i[0] for i in data_db])
     for i in data_api:
         data_table = Tasks(**i)
         if data_table.id in data_id:
-            pass
+            session.query(Tasks).filter(Tasks.id==data_table.id).update(i)
+            print(f'Добавлена инфоррмация в id{data_table.id}')
         else:
             session.add(data_table)
+            print(f'Добавлена запись с id{data_table.id}')
+    session.commit()
     print('БД успешно обновлена!')
+
+def delete_db(index: list):
+    for i in index:
+        session.query(Tasks).filter(Tasks.id==i).delete()
+        print(f'Запись с id: {i} удалена')
+    session.commit()
 
 def get_db():
     pprint(session.query(Tasks).all())
@@ -42,7 +51,7 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
     update_db(data_api)
-    get_db()
-
-    session.commit()
+    # get_db()
+    # delete_db([5])
+    # session.commit()
     session.close()
